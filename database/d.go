@@ -6,4 +6,7 @@ import (
 
 func main() {
 	fmt.Println("hola")
+	fmt
+	fmtfmt
+	fmt
 }
