@@ -73,7 +73,7 @@ Database + Analytics
 - **Bibliotecas principales:** scikit-learn, pandas, NumPy
 - **Razones:** Ecosistema fuerte en análisis de datos, librerías optimizadas para machine learning, facilidad para experimentar con modelos.
 
-### Mensajería (Opcional pero recomendado)
+### Mensajería 
 - **Tecnologías:** Apache Kafka o RabbitMQ
 - **Razones:** Permite desacoplar los servicios y manejar streams de eventos de transacciones.
 
