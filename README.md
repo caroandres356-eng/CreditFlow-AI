@@ -11,9 +11,9 @@ Este proyecto consiste en el desarrollo de una plataforma capaz de simular, proc
 
 El sistema simula un entorno financiero donde miles de transacciones ocurren simultáneamente. Estas transacciones son procesadas por un backend concurrente desarrollado en Go, el cual se encarga de recibir, distribuir y gestionar las transacciones generadas.
 
-Posteriormente, un servicio de análisis implementado en Python utiliza algoritmos de aprendizaje automático para evaluar cada transacción y determinar la probabilidad de fraude.
+Posteriormente, un servicio de análisis implementado en Python con un modelo de aprendizaje previamente entrenado, utiliza algoritmos de aprendizaje automático para evaluar cada transacción y determinar la probabilidad de fraude.
 
-Los resultados son visualizados en tiempo real mediante una interfaz desarrollada con React, que permite monitorear la actividad del sistema, visualizar patrones de fraude y analizar el comportamiento de las transacciones.
+Tanto los resultados como el procesamiento en tiempo real son visualizados en tiempo real mediante una interfaz desarrollada con React, que permite monitorear la actividad del sistema, visualizar patrones de fraude y analizar el comportamiento de las transacciones.
 
 El objetivo del sistema es replicar, a escala simulada, el funcionamiento de los sistemas antifraude utilizados por instituciones financieras modernas.
 
@@ -27,6 +27,7 @@ Desarrollar un sistema distribuido capaz de simular y analizar transacciones fin
 - Procesar eventos de transacciones mediante un backend concurrente.
 - Analizar patrones de comportamiento mediante modelos de machine learning.
 - Visualizar métricas y alertas de fraude en un dashboard interactivo.
+- Visualizar ocurrenciad de transacciones en tiempo real mediante una interfaz grafica.
 - Diseñar una arquitectura escalable basada en microservicios.
 
 ## 3. Arquitectura del Sistema
@@ -59,13 +60,13 @@ Database + Analytics
 ### Backend
 - **Lenguaje:** Go
 - **Razones:** Excelente manejo de concurrencia mediante goroutines, bajo consumo de recursos, ideal para sistemas de alto throughput, muy usado en sistemas financieros y de infraestructura.
-- **Framework sugerido:** Gin (web framework)
+- **Framework utilizado:** Gin (web framework)
 - **Se encargará de:** Recibir transacciones, generar simulaciones, exponer APIs REST, enviar transacciones al sistema de análisis.
 
 ### Frontend
 - **Framework:** React
 - **Razones:** Desarrollo de interfaces dinámicas, manejo eficiente de estados, amplio ecosistema de librerías de visualización.
-- **Librerías útiles:** Recharts, Chart.js
+- **Librerías utiliadas:** Recharts, Chart.js
 - **El frontend mostrará:** Número de transacciones por segundo, porcentaje de fraude detectado, alertas en tiempo real, estadísticas de comportamiento.
 
 ### Machine Learning
@@ -73,7 +74,7 @@ Database + Analytics
 - **Bibliotecas principales:** scikit-learn, pandas, NumPy
 - **Razones:** Ecosistema fuerte en análisis de datos, librerías optimizadas para machine learning, facilidad para experimentar con modelos.
 
-### Mensajería (Opcional pero recomendado)
+### Mensajería
 - **Tecnologías:** Apache Kafka o RabbitMQ
 - **Razones:** Permite desacoplar los servicios y manejar streams de eventos de transacciones.
 
@@ -125,7 +126,7 @@ Los algoritmos recomendados para este tipo de problema incluyen:
 
 ## 7. Flujo completo del sistema
 
-1. **Paso 1:** Un usuario o simulador genera una transacción desde el sistema. El frontend o simulador hace un `POST /transaction`.
+1. **Paso 1:** Un usuario o simulador genera una transacción desde el sistema. El frontend o simulador hace una peticion `POST /transaction`.
 2. **Paso 2:** El backend en Go recibe la transacción. Sus funciones son validar datos, asignar ID, almacenar temporalmente y enviar evento al sistema de análisis.
 3. **Paso 3:** La transacción es enviada a un broker de eventos, permitiendo procesar eventos asincrónicamente.
 4. **Paso 4:** El servicio de machine learning en Python consume la transacción. Proceso:
@@ -133,18 +134,19 @@ Los algoritmos recomendados para este tipo de problema incluyen:
    2. Ejecutar modelo
    3. Calcular score de fraude
 5. **Paso 5:** El resultado se almacena en la base de datos (Ej: `transaction_id`, `fraud_score`, `status`, `timestamp`).
-6. **Paso 6:** El frontend consulta la API para visualizar resultados mediante `GET /fraud-alerts`. El dashboard actualiza alertas, estadísticas y métricas en tiempo real.
+6. **Paso 6:** El frontend consulta la API para visualizar resultados mediante una peticion `GET /fraud-alerts`. El dashboard actualiza alertas, estadísticas y métricas en tiempo real.
 
 ## 8. Funcionalidades del Dashboard
 
 El dashboard mostrará:
 - **Métricas del sistema:** Transacciones por segundo, volumen total procesado, porcentaje de fraude detectado.
 - **Alertas:** Transacciones sospechosas, usuarios de alto riesgo.
-- **Visualización:** Gráficos de comportamiento, tendencias de fraude, mapas geográficos.
+- **Visualización:** Gráficos de comportamiento, tendencias de fraude, mapas geográficos, transacciones siendo procesads en tiempor real.
 
 ## 9. Posibles extensiones
 
-Para hacer el proyecto más avanzado se pueden agregar:
+Escalacion a futuro :
+- Autenticacion y bloqueo de transacciones antes de ser efectuadas por score de fraude.
 - Detección de fraude en tiempo real mediante streaming.
 - Clustering de usuarios sospechosos.
 - Análisis de grafos de transacciones.
