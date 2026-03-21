@@ -7,7 +7,7 @@ Sistema inteligente de autenticación, deteccion de fraude y exposicion de estad
 ## 1. Descripción del Proyecto
 **Sistema de detección de fraude en transacciones financieras en tiempo real**
 
-Este proyecto consiste en el desarrollo de una plataforma capaz de simular, procesar y analizar transacciones financieras para detectar comportamientos fraudulentos utilizando técnicas de machine learning.
+Este proyecto consiste en el desarrollo de una plataforma capaz de simular, procesar y analizar transacciones financieras para detectar comportamientos fraudulentos utilizando técnicas de machine learning, patrones de analisis, diseño, arquitectura ,desliegue y desarrollo de software.
 
 El sistema simula un entorno financiero donde miles de transacciones ocurren simultáneamente. Estas transacciones son procesadas por un backend concurrente desarrollado en Go, el cual se encarga de recibir, distribuir y gestionar las transacciones generadas.
 
