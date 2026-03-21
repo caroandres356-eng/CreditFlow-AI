@@ -1,6 +1,6 @@
 # CreditFlow-AI
 
-Sistema inteligente de autenticación, deteccion de fraude y exposicion de estadisticas que utiliza IA para evaluar flujos de trazabilidad de miles de transacciones por segundo para predecir e identificar posibles riesgos.
+Sistema inteligente de autenticación, deteccion de fraude y exposicion de estadisticas que utiliza IA para evaluar flujos de trazabilidad para miles de transacciones por segundo para predecir e identificar posibles riesgos.
 
 ---
 
